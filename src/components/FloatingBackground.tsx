@@ -31,7 +31,7 @@ const FloatingBackground = () => {
       size: Math.random() * 30 + 20, // 20-50px
       type: ['circle', 'square', 'diamond'][Math.floor(Math.random() * 3)] as any,
       color: colors[Math.floor(Math.random() * colors.length)],
-      duration: Math.random() * 20 + 15, // 15-35 seconds
+      duration: Math.random() * 25 + 20, // 20-45 seconds (longer duration)
       drift: (Math.random() - 0.5) * 100, // -50px to 50px horizontal drift
     };
   };

@@ -4,11 +4,9 @@ import { Button } from '@/components/ui/button';
 
 interface NavigationProps {
   onScrollToSection: (section: string) => void;
-  currentSection: number;
-  sections: string[];
 }
 
-const Navigation = ({ onScrollToSection, currentSection, sections }: NavigationProps) => {
+const Navigation = ({ onScrollToSection }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -31,13 +29,11 @@ const Navigation = ({ onScrollToSection, currentSection, sections }: NavigationP
           <div className="text-2xl font-bold gradient-text">JG</div>
           
           <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item, index) => (
+            {menuItems.map((item) => (
               <button
                 key={item}
                 onClick={() => onScrollToSection(item.toLowerCase())}
-                className={`text-sm transition-colors duration-200 hover:scale-105 transform ${
-                  currentSection === index ? 'text-primary font-medium' : 'hover:text-primary'
-                }`}
+                className="text-sm transition-colors duration-200 hover:scale-105 transform hover:text-primary"
               >
                 {item}
               </button>

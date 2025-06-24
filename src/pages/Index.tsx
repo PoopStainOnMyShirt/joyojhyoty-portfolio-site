@@ -10,11 +10,8 @@ import CertificationsSection from '@/components/CertificationsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import FloatingBackground from '@/components/FloatingBackground';
-import { useCustomScroll } from '@/hooks/useCustomScroll';
 
 const Index = () => {
-  const sections = ['home', 'about', 'experience', 'skills', 'projects', 'certifications', 'contact'];
-  const { currentSection, scrollToSection } = useCustomScroll(sections);
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -27,9 +24,9 @@ const Index = () => {
   }, []);
 
   const handleScrollToSection = (sectionId: string) => {
-    const index = sections.indexOf(sectionId);
-    if (index !== -1) {
-      scrollToSection(index);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -45,8 +42,6 @@ const Index = () => {
       >
         <Navigation 
           onScrollToSection={handleScrollToSection}
-          currentSection={currentSection}
-          sections={sections}
         />
         
         <HeroSection onScrollToSection={handleScrollToSection} />
