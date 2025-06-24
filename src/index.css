@@ -78,8 +78,9 @@
 
   .floating-particle {
     position: absolute;
-    opacity: 0.1;
-    animation: floatUp linear infinite;
+    opacity: 0.2;
+    animation: floatUpRotate linear infinite;
+    filter: blur(0.5px);
   }
 
   .particle-circle {
@@ -87,26 +88,26 @@
   }
 
   .particle-square {
-    border-radius: 4px;
+    border-radius: 8px;
   }
 
   .particle-diamond {
-    transform: rotate(45deg);
+    border-radius: 4px;
   }
 
-  @keyframes floatUp {
+  @keyframes floatUpRotate {
     from {
-      transform: translateY(100vh) translateX(0);
-      opacity: 0.1;
+      transform: translateY(100vh) translateX(0) rotate(var(--rotation, 0deg));
+      opacity: 0;
     }
-    5% {
-      opacity: 0.3;
+    10% {
+      opacity: 0.2;
     }
-    95% {
-      opacity: 0.3;
+    90% {
+      opacity: 0.2;
     }
     to {
-      transform: translateY(-50px) translateX(var(--drift, 0));
+      transform: translateY(-100px) translateX(var(--drift, 0)) rotate(calc(var(--rotation, 0deg) + 360deg));
       opacity: 0;
     }
   }
@@ -127,10 +128,5 @@
 
   .section-padding {
     @apply px-6 lg:px-12 xl:px-24;
-  }
-
-  .parallax-container {
-    transform: translateZ(0);
-    will-change: transform;
   }
 }

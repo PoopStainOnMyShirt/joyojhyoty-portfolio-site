@@ -10,6 +10,7 @@ interface Particle {
   color: string;
   duration: number;
   drift: number;
+  rotation: number;
 }
 
 const FloatingBackground = () => {
@@ -28,11 +29,12 @@ const FloatingBackground = () => {
       id: Math.random(),
       x: Math.random() * window.innerWidth,
       y: window.innerHeight + 50,
-      size: Math.random() * 30 + 20, // 20-50px
+      size: Math.random() * 40 + 30, // 30-70px (larger)
       type: ['circle', 'square', 'diamond'][Math.floor(Math.random() * 3)] as any,
       color: colors[Math.floor(Math.random() * colors.length)],
-      duration: Math.random() * 25 + 20, // 20-45 seconds (longer duration)
-      drift: (Math.random() - 0.5) * 100, // -50px to 50px horizontal drift
+      duration: Math.random() * 20 + 15, // 15-35 seconds
+      drift: (Math.random() - 0.5) * 80, // -40px to 40px horizontal drift
+      rotation: Math.random() * 360, // Random initial rotation
     };
   };
 
@@ -48,12 +50,12 @@ const FloatingBackground = () => {
     };
 
     // Add initial particles
-    for (let i = 0; i < 8; i++) {
-      setTimeout(() => addParticle(), i * 2000);
+    for (let i = 0; i < 6; i++) {
+      setTimeout(() => addParticle(), i * 1500);
     }
 
     // Continue adding particles
-    const interval = setInterval(addParticle, 3000);
+    const interval = setInterval(addParticle, 2500);
 
     return () => {
       clearInterval(interval);
@@ -68,12 +70,13 @@ const FloatingBackground = () => {
           className={`floating-particle particle-${particle.type}`}
           style={{
             left: `${particle.x}px`,
-            bottom: '-50px',
+            bottom: '-80px',
             width: `${particle.size}px`,
             height: `${particle.size}px`,
             background: particle.color,
             animationDuration: `${particle.duration}s`,
             '--drift': `${particle.drift}px`,
+            '--rotation': `${particle.rotation}deg`,
           } as React.CSSProperties}
         />
       ))}
