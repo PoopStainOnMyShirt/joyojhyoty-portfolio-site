@@ -56,6 +56,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
   }
 
   html {
@@ -64,49 +65,50 @@
 }
 
 @layer components {
-  .floating-shapes {
+  .floating-background {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     pointer-events: none;
     z-index: 0;
+    overflow: hidden;
   }
 
-  .shape {
+  .floating-particle {
     position: absolute;
     opacity: 0.1;
+    animation: floatUp linear infinite;
   }
 
-  .shape-1 {
-    top: 10%;
-    left: 10%;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(45deg, #00bcd4, #2196f3);
-    border-radius: 12px;
-    animation: float 8s ease-in-out infinite;
-  }
-
-  .shape-2 {
-    top: 60%;
-    right: 15%;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #9c27b0, #673ab7);
+  .particle-circle {
     border-radius: 50%;
-    animation: float 6s ease-in-out infinite reverse;
   }
 
-  .shape-3 {
-    bottom: 20%;
-    left: 20%;
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(225deg, #ff5722, #ff9800);
+  .particle-square {
+    border-radius: 4px;
+  }
+
+  .particle-diamond {
     transform: rotate(45deg);
-    animation: rotate 15s linear infinite;
+  }
+
+  @keyframes floatUp {
+    from {
+      transform: translateY(100vh) translateX(0);
+      opacity: 0.1;
+    }
+    10% {
+      opacity: 0.3;
+    }
+    90% {
+      opacity: 0.3;
+    }
+    to {
+      transform: translateY(-100px) translateX(var(--drift, 0));
+      opacity: 0;
+    }
   }
 
   .gradient-text {
@@ -125,5 +127,10 @@
 
   .section-padding {
     @apply px-6 lg:px-12 xl:px-24;
+  }
+
+  .parallax-container {
+    transform: translateZ(0);
+    will-change: transform;
   }
 }

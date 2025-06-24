@@ -2,7 +2,13 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
-const Navigation = () => {
+interface NavigationProps {
+  onScrollToSection: (section: string) => void;
+  currentSection: number;
+  sections: string[];
+}
+
+const Navigation = ({ onScrollToSection, currentSection, sections }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -14,12 +20,7 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const menuItems = ['Home', 'About', 'Experience', 'Skills', 'Projects', 'Certifications', 'Contact'];
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -30,11 +31,13 @@ const Navigation = () => {
           <div className="text-2xl font-bold gradient-text">JG</div>
           
           <div className="hidden md:flex items-center space-x-8">
-            {['Home', 'About', 'Experience', 'Skills', 'Projects', 'Contact'].map((item) => (
+            {menuItems.map((item, index) => (
               <button
                 key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-sm hover:text-primary transition-colors duration-200 hover:scale-105 transform"
+                onClick={() => onScrollToSection(item.toLowerCase())}
+                className={`text-sm transition-colors duration-200 hover:scale-105 transform ${
+                  currentSection === index ? 'text-primary font-medium' : 'hover:text-primary'
+                }`}
               >
                 {item}
               </button>
@@ -42,7 +45,7 @@ const Navigation = () => {
           </div>
 
           <Button 
-            onClick={() => scrollToSection('contact')}
+            onClick={() => onScrollToSection('contact')}
             className="bg-primary text-primary-foreground hover:bg-primary/90"
           >
             Get in Touch

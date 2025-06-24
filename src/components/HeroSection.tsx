@@ -2,22 +2,13 @@
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
 
-const HeroSection = () => {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+interface HeroSectionProps {
+  onScrollToSection: (section: string) => void;
+}
 
+const HeroSection = ({ onScrollToSection }: HeroSectionProps) => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div className="floating-shapes">
-        <div className="shape shape-1"></div>
-        <div className="shape shape-2"></div>
-        <div className="shape shape-3"></div>
-      </div>
-      
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden parallax-container">
       <div className="section-padding text-center z-10 animate-fade-in">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slide-in">
           Hi, I'm <span className="gradient-text">Joyojhyoty Gupta</span>
@@ -32,7 +23,7 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-in" style={{ animationDelay: '0.6s' }}>
           <Button 
             size="lg" 
-            onClick={() => scrollToSection('projects')}
+            onClick={() => onScrollToSection('projects')}
             className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-200"
           >
             Explore My Work
@@ -40,7 +31,7 @@ const HeroSection = () => {
           <Button 
             size="lg" 
             variant="outline" 
-            onClick={() => scrollToSection('contact')}
+            onClick={() => onScrollToSection('contact')}
             className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-200"
           >
             Get in Touch
@@ -51,7 +42,7 @@ const HeroSection = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <ArrowDown 
           className="w-6 h-6 text-muted-foreground cursor-pointer hover:text-primary transition-colors"
-          onClick={() => scrollToSection('about')}
+          onClick={() => onScrollToSection('about')}
         />
       </div>
     </section>
