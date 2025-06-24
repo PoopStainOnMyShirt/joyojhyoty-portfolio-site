@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Award, Certificate } from 'lucide-react';
+import { Award, FileText } from 'lucide-react';
 
 const CertificationsSection = () => {
   const awards = [
@@ -73,7 +73,7 @@ const CertificationsSection = () => {
           {/* Certifications Section */}
           <div>
             <div className="flex items-center justify-center mb-8">
-              <Certificate className="w-6 h-6 text-primary mr-2" />
+              <FileText className="w-6 h-6 text-primary mr-2" />
               <h3 className="text-2xl font-semibold text-primary">Certifications</h3>
             </div>
             
