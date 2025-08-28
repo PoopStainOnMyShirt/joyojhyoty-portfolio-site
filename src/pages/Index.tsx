@@ -21,7 +21,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">
-      <FloatingBackground />
+
       
       <div className="relative z-10">
         <Navigation 

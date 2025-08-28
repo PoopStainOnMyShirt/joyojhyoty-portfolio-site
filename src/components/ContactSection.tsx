@@ -39,9 +39,9 @@ const ContactSection = () => {
     
     try {
       // EmailJS configuration - you'll need to replace these with your actual values
-      const serviceId = 'YOUR_SERVICE_ID';
-      const templateId = 'YOUR_TEMPLATE_ID';
-      const publicKey = 'YOUR_PUBLIC_KEY';
+      const serviceId = 'service_une57xm';
+      const templateId = 'template_dybo24u';
+      const publicKey = 'yN3j2gdNswB4tpcUf';
       
       const templateParams = {
         from_name: data.name,
@@ -81,8 +81,7 @@ const ContactSection = () => {
             <div className="animate-slide-in">
               <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                What would you do if you had a software expert available at your fingertips? 
-                Want to start a new project? Or just say hey. Feel free to reach out!
+                Feel free to reach out!
               </p>
               
               <div className="space-y-4">
@@ -95,7 +94,7 @@ const ContactSection = () => {
                 </a>
                 
                 <a 
-                  href="#"
+                  href="https://www.linkedin.com/in/joyojhyoty-gupta-913b9820b/"
                   className="flex items-center space-x-3 p-3 border border-border rounded-lg hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group"
                 >
                   <Linkedin className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
@@ -103,7 +102,7 @@ const ContactSection = () => {
                 </a>
                 
                 <a 
-                  href="#"
+                  href="https://github.com/PoopStainOnMyShirt"
                   className="flex items-center space-x-3 p-3 border border-border rounded-lg hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 group"
                 >
                   <Github className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
