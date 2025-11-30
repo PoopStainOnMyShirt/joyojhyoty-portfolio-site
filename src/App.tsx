@@ -20,7 +20,7 @@ const App = () => (
       {/* 2. Pass the BASE_PATH to the basename prop */}
       <BrowserRouter basename={BASE_PATH}> 
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/joyojhyoty-portfolio-site/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
